@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/UIKit/Themed';
+import { Text, View, Button } from '../components/UIKit/Themed';
 
-export default function TabOneScreen() {
+export default function TabOneScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <Button text="Check UIKit Components" onPress={() => navigation.navigate('UIKit')} />
     </View>
   );
 }

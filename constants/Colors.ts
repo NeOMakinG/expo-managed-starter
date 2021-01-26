@@ -8,6 +8,10 @@ export default {
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
+    Button: {
+      color: '#000',
+      background: '#fff',
+    }
   },
   dark: {
     text: '#fff',
@@ -15,5 +19,16 @@ export default {
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
+    Button: {
+      color: '#000',
+      background: '#fff',
+    }
   },
+  default: {
+    Button: {
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderRadius: 4,
+    }
+  }
 };
