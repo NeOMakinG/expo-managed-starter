@@ -2,14 +2,44 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import UIKitScreen from '../screens/UIKit';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomNavigation, BottomNavigationTab, Text, Icon } from '@ui-kitten/components';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+
+const HomeIcon = (props) => (
+  <Icon {...props} name='home'/>
+);
+
+const ListIcon = (props) => (
+  <Icon {...props} name='list'/>
+);
+
+const EditIcon = (props) => (
+  <Icon {...props} name='edit'/>
+);
+
+const BottomTabBar = ({ navigation, state }) => {
+  const insets = useSafeAreaInsets();
+
+  return (
+    <BottomNavigation
+      style={{paddingBottom: insets.bottom}}
+      selectedIndex={state.index}
+      onSelect={index => navigation.navigate(state.routeNames[index])}>
+      <BottomNavigationTab title='Home' icon={HomeIcon}/>
+      <BottomNavigationTab title='List' icon={ListIcon}/>
+      <BottomNavigationTab title='UI Kit' icon={EditIcon}/>
+    </BottomNavigation>
+  )
+};
 
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
@@ -17,7 +47,8 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBar={props => <BottomTabBar {...props} />}
+      >
       <BottomTab.Screen
         name="TabOne"
         component={TabOneNavigator}
@@ -30,6 +61,14 @@ export default function BottomTabNavigator() {
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="UIKit"
+        component={UIKitScreen}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          headerShown: false
         }}
       />
     </BottomTab.Navigator>
@@ -52,7 +91,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'Tab One Title', headerShown: false }}
       />
     </TabOneStack.Navigator>
   );
@@ -66,7 +105,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'Tab Two Title', headerShown: false }}
       />
     </TabTwoStack.Navigator>
   );
