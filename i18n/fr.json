@@ -11,6 +11,12 @@
     "continue": "Continuer"
   },
   "globals": {
-    "or": "Ou"
+    "or": "Ou",
+    "home": "Accueil",
+    "list": "Liste"
+  },
+  "menu": {
+    "profile": "Mon profil",
+    "parameters": "Parametres"
   }
 }

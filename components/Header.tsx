@@ -6,43 +6,17 @@ const BackIcon = (props) => (
   <Icon {...props} name='arrow-back'/>
 );
 
-const EditIcon = (props) => (
-  <Icon {...props} name='edit'/>
-);
-
 const MenuIcon = (props) => (
-  <Icon {...props} name='more-vertical'/>
+  <Icon {...props} name='menu'/>
 );
 
-const InfoIcon = (props) => (
-  <Icon {...props} name='info'/>
-);
-
-const LogoutIcon = (props) => (
-  <Icon {...props} name='log-out'/>
-);
-
-export const Header = ({navigation, showMenu, title}) => {
-  const [menuVisible, setMenuVisible] = React.useState(false);
-
+export const Header = ({navigation, hideMenu, title}) => {
   const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
-  };
+    navigation.toggleDrawer();
+  }
 
   const renderMenuAction = () => (
     <TopNavigationAction icon={MenuIcon} onPress={toggleMenu}/>
-  );
-
-  const renderRightActions = () => (
-    <React.Fragment>
-      <OverflowMenu
-        anchor={renderMenuAction}
-        visible={menuVisible}
-        onBackdropPress={toggleMenu}>
-        <MenuItem accessoryLeft={InfoIcon} title='About'/>
-        <MenuItem accessoryLeft={LogoutIcon} title='Logout'/>
-      </OverflowMenu>
-    </React.Fragment>
   );
 
   const renderBackAction = () => (
@@ -55,7 +29,7 @@ export const Header = ({navigation, showMenu, title}) => {
         alignment='center'
         title={title}
         accessoryLeft={renderBackAction}
-        accessoryRight={showMenu ? renderRightActions : undefined}
+        accessoryRight={!hideMenu ? renderMenuAction : undefined}
       />
     </Layout>
   );

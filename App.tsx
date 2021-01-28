@@ -9,6 +9,7 @@ import Navigation from './navigation';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Text, IconRegistry} from '@ui-kitten/components';
 import { theme } from './constants/theme';
+import vars from './constants/vars';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 // Localization
@@ -25,6 +26,14 @@ i18n.translations = {
 i18n.locale = Localization.locale;
 i18n.fallbacks = true;
 
+// GraphQL Client
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: vars.API_URL,
+  cache: new InMemoryCache()
+});
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
@@ -36,10 +45,12 @@ export default function App() {
       <>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider {...eva} theme={{...eva[colorScheme], ...theme}}>
-          <SafeAreaProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
-          </SafeAreaProvider>
+          <ApolloProvider client={client}>
+            <SafeAreaProvider>
+              <Navigation colorScheme={colorScheme} />
+              <StatusBar />
+            </SafeAreaProvider>
+          </ApolloProvider>
         </ApplicationProvider>
       </>
     );

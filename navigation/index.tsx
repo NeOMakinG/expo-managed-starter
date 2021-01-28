@@ -9,9 +9,25 @@ import UIKitScreen from '../screens/UIKit';
 import IntroductionScreen from '../screens/Authentification/Introduction';
 import LoginScreen from '../screens/Authentification/Login';
 
+// Components
+import Menu from '../components/Menu';
+
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+
+import fadeConfig from '../utils/fade';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator screenOptions={{ headerShown: false }} drawerContent={props => <Menu {...props}/>}>
+      <Drawer.Screen name="Drawer" component={RootNavigator} />
+    </Drawer.Navigator>
+  );
+}
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -20,7 +36,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
+      <DrawerNavigator />
     </NavigationContainer>
   );
 }
@@ -31,8 +47,8 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Beginning" component={IntroductionScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: fadeConfig }}>
+      <Stack.Screen name="Introduction" component={IntroductionScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
 
       <Stack.Screen name="Root" component={BottomTabNavigator} />

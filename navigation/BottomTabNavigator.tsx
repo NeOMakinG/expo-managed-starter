@@ -11,6 +11,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import UIKitScreen from '../screens/UIKit';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import { BottomNavigation, BottomNavigationTab, Text, Icon } from '@ui-kitten/components';
+import i18n from 'i18n-js';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -34,8 +35,8 @@ const BottomTabBar = ({ navigation, state }) => {
       style={{paddingBottom: insets.bottom}}
       selectedIndex={state.index}
       onSelect={index => navigation.navigate(state.routeNames[index])}>
-      <BottomNavigationTab title='Home' icon={HomeIcon}/>
-      <BottomNavigationTab title='List' icon={ListIcon}/>
+      <BottomNavigationTab title={i18n.t('globals.home')} icon={HomeIcon}/>
+      <BottomNavigationTab title={i18n.t('globals.list')} icon={ListIcon}/>
       <BottomNavigationTab title='UI Kit' icon={EditIcon}/>
     </BottomNavigation>
   )
