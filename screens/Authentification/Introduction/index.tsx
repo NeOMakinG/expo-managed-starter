@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Layout, Divider, Text, Button, StyleService, useStyleSheet } from '@ui-kitten/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PageHeader from '../../../components/PageHeader';
@@ -22,6 +22,9 @@ export default function Introduction({navigation}) {
           <Button onPress={() => navigation.navigate('Login')}>{i18n.t('loginPage.submitButton')}</Button>
           <Text category='s1' style={uiStyles.textSeparator}>{i18n.t('globals.or')}</Text>
           <Button onPress={() => navigation.navigate('Register')} appearance='outline'>{i18n.t('registerPage.submitButton')}</Button>
+          <TouchableOpacity onPress={() => {navigation.navigate('Root')}} style={uiStyles.continue}>
+            <Text>{i18n.t('introductionPage.continue')}</Text>
+          </TouchableOpacity>
         </PageContent>
       </SafeAreaView>
     </Layout>
@@ -31,5 +34,8 @@ export default function Introduction({navigation}) {
 const themedStyles = StyleService.create({
   textSeparator: {
     marginVertical: 10
+  },
+  continue: {
+    marginTop: 30
   }
 });
