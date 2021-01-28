@@ -1,4 +1,5 @@
 export type RootStackParamList = {
+  Beginning: undefined;
   Root: undefined;
   NotFound: undefined;
   UIKit: undefined;

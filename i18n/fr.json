@@ -1,0 +1,15 @@
+{
+  "loginPage": {
+    "submitButton": "Je me connecte",
+    "title": "Se connecter"
+  },
+  "registerPage": {
+    "submitButton": "Je m'inscris"
+  },
+  "introductionPage": {
+    "welcome": "Bienvenu"
+  },
+  "globals": {
+    "or": "Ou"
+  }
+}

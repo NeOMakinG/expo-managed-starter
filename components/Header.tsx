@@ -22,7 +22,7 @@ const LogoutIcon = (props) => (
   <Icon {...props} name='log-out'/>
 );
 
-export const Header = () => {
+export const Header = ({navigation, showMenu, title}) => {
   const [menuVisible, setMenuVisible] = React.useState(false);
 
   const toggleMenu = () => {
@@ -46,16 +46,16 @@ export const Header = () => {
   );
 
   const renderBackAction = () => (
-    <TopNavigationAction icon={BackIcon}/>
+    <TopNavigationAction icon={BackIcon} onPress={() => navigation.goBack()}/>
   );
 
   return (
     <Layout style={styles.container} level='1'>
       <TopNavigation
         alignment='center'
-        title='Home'
+        title={title}
         accessoryLeft={renderBackAction}
-        accessoryRight={renderRightActions}
+        accessoryRight={showMenu ? renderRightActions : undefined}
       />
     </Layout>
   );
