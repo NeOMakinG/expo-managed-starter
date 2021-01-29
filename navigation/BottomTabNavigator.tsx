@@ -12,6 +12,7 @@ import UIKitScreen from '../screens/UIKit';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import { BottomNavigation, BottomNavigationTab, Text, Icon } from '@ui-kitten/components';
 import i18n from 'i18n-js';
+import cliScreens from './cli-screens'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

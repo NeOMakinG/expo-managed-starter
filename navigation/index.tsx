@@ -15,6 +15,7 @@ import Menu from '../components/Menu';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import cliScreens from './cli-screens'
 
 import fadeConfig from '../utils/fade';
 
@@ -54,6 +55,10 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="UIKit" component={UIKitScreen} options={{ title: 'UIKit examples' }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      
+      {cliScreens && cliScreens.globals.map(screen => {
+        return <Stack.Screen name={screen.name} component={screen.component} />
+      })}
     </Stack.Navigator>
   );
 }
