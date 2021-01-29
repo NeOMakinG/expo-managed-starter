@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 // cli-imports
-
 // cli-imports
 
 export default {
@@ -12,10 +11,8 @@ export default {
   ],
   globals: [
 // globals-imports
-
 // globals-imports
   ],
-
   drawer: [
 
   ]
