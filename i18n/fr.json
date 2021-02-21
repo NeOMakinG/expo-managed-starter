@@ -1,9 +1,16 @@
 {
   "loginPage": {
     "submitButton": "Je me connecte",
-    "title": "Se connecter"
+    "title": "Se connecter",
+    "loginLabel": "Email ou nom d'utilisateur",
+    "passwordLabel": "Mot de passe"
   },
   "registerPage": {
+    "title": "S'inscrire",
+    "emailLabel": "Email",
+    "usernameLabel": "Nom d'utilisateur",
+    "passwordLabel": "Mot de passe",
+    "passwordConfirmLabel": "Confirmer le mot de passe",
     "submitButton": "Je m'inscris"
   },
   "introductionPage": {

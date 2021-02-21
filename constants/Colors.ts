@@ -29,6 +29,9 @@ export default {
       paddingHorizontal: 20,
       paddingVertical: 10,
       borderRadius: 4,
+    },
+    Input: {
+      marginBottom: 10
     }
   }
 };

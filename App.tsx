@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { TouchableWithoutFeedback, KeyboardAvoidingView, Platform, Keyboard, StyleSheet } from 'react-native';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -46,10 +47,8 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider {...eva} theme={{...eva[colorScheme], ...theme}}>
           <ApolloProvider client={client}>
-            <SafeAreaProvider>
-              <Navigation colorScheme={colorScheme} />
-              <StatusBar />
-            </SafeAreaProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
           </ApolloProvider>
         </ApplicationProvider>
       </>

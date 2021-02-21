@@ -8,6 +8,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import UIKitScreen from '../screens/UIKit';
 import IntroductionScreen from '../screens/Authentification/Introduction';
 import LoginScreen from '../screens/Authentification/Login';
+import RegisterScreen from '../screens/Authentification/Register';
 
 // Components
 import Menu from '../components/Menu';
@@ -51,6 +52,7 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false, cardStyleInterpolator: fadeConfig }}>
       <Stack.Screen name="Introduction" component={IntroductionScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
 
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="UIKit" component={UIKitScreen} options={{ title: 'UIKit examples' }} />

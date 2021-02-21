@@ -6,11 +6,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   safeArea: {
-    width: '100%', alignItems: 'center' 
+    width: '100%', 
+    alignItems: 'center' 
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  inputLabel: {
+    marginBottom: 5
   }
 });
 

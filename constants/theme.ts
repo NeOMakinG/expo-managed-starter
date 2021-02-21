@@ -77,5 +77,5 @@ export const theme = {
   "color-danger-transparent-300": "rgba(255, 124, 53, 0.24)",
   "color-danger-transparent-400": "rgba(255, 124, 53, 0.32)",
   "color-danger-transparent-500": "rgba(255, 124, 53, 0.4)",
-  "color-danger-transparent-600": "rgba(255, 124, 53, 0.48)"
+  "color-danger-transparent-600": "rgba(255, 124, 53, 0.48)",
 };

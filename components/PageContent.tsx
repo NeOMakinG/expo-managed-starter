@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, TouchableWithoutFeedback, KeyboardAvoidingView, Platform, Keyboard } from 'react-native';
 import { StyleService, Layout, Divider, Text, useStyleSheet } from '@ui-kitten/components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -20,6 +20,7 @@ const themedStyles = StyleService.create({
   content: {
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: windowHeight / 4 * 3
+    minHeight: windowHeight / 4 * 3,
+    flex: 1
   }
 });

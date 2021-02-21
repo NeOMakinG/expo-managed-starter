@@ -10,7 +10,7 @@ import { Formik } from 'formik';
 import styles from '../../../globals/style';
 import i18n from 'i18n-js';
 
-export default function Login({navigation}) {
+export default function Register({navigation}) {
   const uiStyles = useStyleSheet(themedStyles);
   const [secureTextEntry, setSecureTextEntry] = React.useState(true);
 
@@ -27,11 +27,11 @@ export default function Login({navigation}) {
   return (
     <Layout style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <Header navigation={navigation} title={i18n.t('loginPage.title')} />
+        <Header navigation={navigation} title={i18n.t('registerPage.title')} />
 
         <PageContent>
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ email: '', password: '', username: '', passwordConfirm: '' }}
              onSubmit={values => console.log(values)}
            >
              {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -45,7 +45,15 @@ export default function Login({navigation}) {
                      onChangeText={handleChange('email')}
                      onBlur={handleBlur('email')}
                      value={values.email}
-                     label={i18n.t('loginPage.loginLabel')}
+                     label={i18n.t('registerPage.emailLabel')}
+                     labelStyle={styles.inputLabel}
+                   />
+
+                   <Input
+                     onChangeText={handleChange('username')}
+                     onBlur={handleBlur('username')}
+                     value={values.username}
+                     label={i18n.t('registerPage.usernameLabel')}
                      labelStyle={styles.inputLabel}
                    />
 
@@ -53,12 +61,22 @@ export default function Login({navigation}) {
                      onChangeText={handleChange('password')}
                      onBlur={handleBlur('password')}
                      value={values.password}
-                     label={i18n.t('loginPage.passwordLabel')}
+                     label={i18n.t('registerPage.passwordLabel')}
                      secureTextEntry={secureTextEntry}
                      accessoryRight={renderIcon}
                      labelStyle={styles.inputLabel}
                    />
-                    <Button onPress={handleSubmit}>{i18n.t('loginPage.submitButton')}</Button>
+
+                   <Input
+                     onChangeText={handleChange('passwordConfirm')}
+                     onBlur={handleBlur('passwordConfirm')}
+                     value={values.passwordConfirm}
+                     label={i18n.t('registerPage.passwordConfirmLabel')}
+                     secureTextEntry={secureTextEntry}
+                     accessoryRight={renderIcon}
+                     labelStyle={styles.inputLabel}
+                   />
+                    <Button onPress={handleSubmit}>{i18n.t('registerPage.submitButton')}</Button>
                   </ScrollView>
                 </TouchableWithoutFeedback>
               </KeyboardAvoidingView>
